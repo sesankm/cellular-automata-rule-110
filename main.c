@@ -48,7 +48,7 @@ int main(){
 				break;
 			}
 		}
-		tick(rend, 900, cells);
+		tick(rend, 35500, cells);
 		updateCells(cells);
 	}
 
@@ -88,8 +88,8 @@ void drawCells(SDL_Renderer* rend, int** cells){
 1	0	1	0
 */
 void updateCells(int** cells){
-	for(int i = 1; i < NUM_ROWS - 1; i++) {
-		for(int j = 1; j < NUM_COLS - 1; j++) {
+	for(int i = 1; i < NUM_ROWS; i++) {
+		for(int j = 0; j < NUM_COLS; j++) {
 			if(cells[i][j] == 0) {
 				if(cells[i][j - 1] == 1 && cells[i][j + 1] == 1) {
 					cells[i - 1][j] = 1;
@@ -126,7 +126,7 @@ void tick(SDL_Renderer* rend, int updateInteveralNanoSeconds, int** cells){
 	SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
 	SDL_RenderClear(rend);
 
-	drawGrid(rend);
+	//drawGrid(rend);
 	drawCells(rend, cells);
 
 	SDL_RenderPresent(rend);
